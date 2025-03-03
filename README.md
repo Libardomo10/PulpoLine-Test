@@ -9,6 +9,11 @@ Este proyecto es una aplicación de clima desarrollada con Angular version 16.2.
 git clone https://github.com/Libardomo10/PulpoLine-Test.git
 cd PulpoLine-Test
 
+Sobre el proyecto deberá realizar un paso hacía la rama dev-test-pulpoline
+    1. `git fetch origin`
+    2. `git checkout dev-test-pulpoline`
+    3. `git pull origin dev-test-pulpoline`
+
 ## 2 Instalar dependencias
 npm install
 
