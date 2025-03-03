@@ -1,0 +1,38 @@
+<div class="min-h-screen flex flex-col items-center bg-gray-100 p-4 relative">
+    <!-- Navbar -->
+    <nav class="w-full bg-blue-600 text-white p-4 shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-xl font-semibold">{{ 'TITLE' | translate}}</h1>
+
+            <ul class="flex gap-4">
+                <li><a routerLink="/" class="hover:underline">{{ 'SEARCH' | translate }}</a></li>
+                <li><a routerLink="/favorites" class="hover:underline">{{ 'FAVORITES' | translate }}</a></li>
+                <li><a routerLink="/history" class="hover:underline">{{ 'SEARCH_HISTORY' | translate }}</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Contenido de la Aplicación -->
+    <div class="container mx-auto flex flex-col items-center gap-6 mt-6 overflow-x-auto w-full">
+        <router-outlet></router-outlet>
+    </div>
+
+    <div class="fixed bottom-6 right-6">
+        <button (click)="toggleDropdown()"
+            class="bg-white text-gray-800 px-4 py-2 rounded-md shadow-md flex items-center gap-2 border border-gray-300">
+            <span>{{ currentLang === 'en' ? 'EN' : 'ES' }}</span>
+            <i class="fa-solid fa-chevron-up"></i>
+        </button>
+    
+        <!-- Dropdown de opciones hacia arriba -->
+        <div *ngIf="showDropdown"
+            class="absolute right-0 bottom-full mb-2 w-32 bg-white border border-gray-300 rounded-md shadow-md text-gray-800">
+            <button (click)="switchLanguage('en')" class="block w-full text-left px-4 py-2 hover:bg-gray-200">
+                🇺🇸 English
+            </button>
+            <button (click)="switchLanguage('es')" class="block w-full text-left px-4 py-2 hover:bg-gray-200">
+                🇪🇸 Español
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+<div class="w-80 mx-auto mt-4 p-4 bg-white shadow-md rounded-md">
+    <input type="text" [formControl]="searchControl" placeholder="Enter city name..." 
+        class="w-full p-2 border rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+        autocomplete="off" />
+
+    <!-- Sugerencias de ciudades -->
+    <ul *ngIf="citySuggestions$ | async as suggestions"
+        class="w-full bg-white border rounded-md shadow-md max-h-60 overflow-auto">
+        <li *ngFor="let city of suggestions" (click)="onSelectCity(city.name)"
+            class="p-2 hover:bg-blue-100 cursor-pointer transition">
+            {{ city.name }}, {{ city.country }}
+        </li>
+    </ul>
+
+    <p *ngIf="isLoading" class="text-gray-500">{{'LOADING_SUGGENSTIONS' | translate}}</p>
+
+    <app-weather-result *ngIf="weatherData" [weatherData]="weatherData"></app-weather-result>
+
+    <!-- Toast Notification -->
+    <div *ngIf="showToast"
+        class="fixed bottom-4 right-4 bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg animate-fade">
+        {{ toastMessage | translate }}
+    </div>
+</div>
